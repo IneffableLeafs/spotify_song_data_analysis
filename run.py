@@ -1,5 +1,7 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
+from spotify_client import SpotifyClient
+
 
 username = input("Enter your Spotify username: ")
 
@@ -11,7 +13,7 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="43dfe303cbce478e8c8952
                                                username=username,
                                                scope="user-library-read"))
 
-results = sp.current_user_saved_tracks()
-for idx, item in enumerate(results['items']):
-    track = item['track']
-    print(idx, track['artists'][0]['name'], " – ", track['name'])
+get_song(sp)
+
+
+
