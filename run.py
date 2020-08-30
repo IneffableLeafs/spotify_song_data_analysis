@@ -1,6 +1,8 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 from spotify_client import SpotifyClient
+from data_conversion import DataAnalysis	
+import pandas as pd
 
 # prompt user for username
 username = input("Enter your Spotify username: ")
@@ -40,7 +42,22 @@ danceability, energy, loudness, speechiness, acousticness, instrumentalness, liv
 
 # now, we want to hand the get_audio_features function a single track at once, then add its features to the respective list:
 for song_id in song_ids:
-	SpotifyClient.get_audio_features(sp2, song_id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
+	SpotifyClient.get_audio_features(sp, song_id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
+
+# next, to do the data analysis with DataFrames, we need to convert our separate lists into a list of lists:
+audio_features = []
+audio_features.append(danceability)
+audio_features.append(energy)
+audio_features.append(loudness)
+audio_features.append(speechiness)
+audio_features.append(acousticness)
+audio_features.append(instrumentalness)
+audio_features.append(liveness)
+audio_features.append(valence)
+audio_features.append(tempo)
+
+print(audio_features)
+
 
 
 
