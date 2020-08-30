@@ -1,8 +1,10 @@
 class DataAnalysis(object):
 
-	# this function will turn a list into a csv files, that we can use with pandas for data analysis
-	def csv_conversion(data_list):
-		df = pd.DataFrame(data_list)
+	# this function will turn our list of lists into a csv file, that we can use with pandas for data analysis
+	def dataframe_conversion(pd, data_list):
+		df = pd.DataFrame(data_list).transpose()
+		df.columns = ["Danceability", "Energy", "Loudness", "Speechiness", "Acousticness", "Instrumentalness", "Liveness", "Valence", "Tempo"]
+		df.to_csv("audio_features.csv")
 		print(df)
 		return df
 

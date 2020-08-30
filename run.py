@@ -16,10 +16,6 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="43dfe303cbce478e8c8952
                                                username=username,
                                                scope=scope))
 
-# authenticate for audio features
-client_credentials_manager = SpotifyClientCredentials()
-sp2 = spotipy.Spotify(client_credentials_manager=client_credentials_manager)
-
 # set the offset initially to zero
 offset = 0
 
@@ -56,8 +52,5 @@ audio_features.append(liveness)
 audio_features.append(valence)
 audio_features.append(tempo)
 
-print(audio_features)
-
-
-
-
+data = DataAnalysis.dataframe_conversion(pd, audio_features)
+data.to_csv("audio_features.csv")
