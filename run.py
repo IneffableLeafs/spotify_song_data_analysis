@@ -19,9 +19,9 @@ offset = 0
 
 # set this to the number of songs 
 max_songs = 372
-# we need to keep calling get_song until we get all the songs in the user's library.
 
-for song in range(offset, max_songs):
+# we need to keep calling get_song until we get all the songs in the user's library.
+for song in range(offset, max_songs): 
 
 	SpotifyClient.get_song(sp, offset)
 	offset += 50
