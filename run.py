@@ -39,8 +39,6 @@ for song in range(offset, max_songs):
 danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo = ([] for i in range(9))
 
 # now, we want to hand the get_audio_features function a single track at once, then add its features to the respective list:
-#for song_id in song_ids:
-
 for song_id in song_ids:
 	SpotifyClient.get_audio_features(sp2, song_id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
 
