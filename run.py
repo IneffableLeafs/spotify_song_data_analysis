@@ -3,6 +3,8 @@ from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 from spotify_client import SpotifyClient
 from data_conversion import DataAnalysis	
 import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 # prompt user for username
 username = input("Enter your Spotify username: ")
@@ -52,5 +54,4 @@ audio_features.append(liveness)
 audio_features.append(valence)
 audio_features.append(tempo)
 
-data = DataAnalysis.dataframe_conversion(pd, audio_features)
-data.to_csv("audio_features.csv")
+df = DataAnalysis.dataframe_conversion(pd, audio_features)

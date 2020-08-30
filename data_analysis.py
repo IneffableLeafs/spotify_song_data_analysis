@@ -8,4 +8,5 @@ class DataAnalysis(object):
 		print(df)
 		return df
 
-		
+	# this function will take and read a csv file, getting it ready for plots
+	def load_data(filepath):
