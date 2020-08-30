@@ -1,11 +1,9 @@
-def get_song(client):
+class SpotifyClient(object):
 
-	results = client.current_user_saved_tracks()
-	print(results)
-	for idx, item in enumerate(results['items']):
-		track = item['track']
-		print(idx, track['artists'][0]['name'], " – ", track['name'])
+	def get_song(client):
 
-
-def audio_features(songs):
-	pass
+		results = client.current_user_saved_tracks()
+		print(results)
+		for idx, item in enumerate(results['items']):
+			track = item['track']
+			print(idx, track['artists'][0]['name'], " – ", track['name'])

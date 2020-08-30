@@ -1,6 +1,6 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
-from spotify_client import get_song
+from spotify_client import SpotifyClient
 
 # prompt user for username
 username = input("Enter your Spotify username: ")
@@ -19,7 +19,7 @@ limit = 50
 # set the offset initially to zero
 offset = 0
 
-get_song(sp)
+SpotifyClient.get_song(sp)
 
 
 
