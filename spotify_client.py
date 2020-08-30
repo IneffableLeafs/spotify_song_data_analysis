@@ -1,9 +1,10 @@
 class SpotifyClient(object):
 
-	def get_song(client):
+	def get_song(client, offset):
 
-		results = client.current_user_saved_tracks()
-		print(results)
+		limit = 50
+		results = client.current_user_saved_tracks(limit, offset)
+		#library = results["total"]
 		for idx, item in enumerate(results['items']):
 			track = item['track']
-			print(idx, track['artists'][0]['name'], " – ", track['name'])
+			print(idx + offset, track['artists'][0]['name'], " – ", track['name'])
