@@ -23,5 +23,10 @@ ax.scatter(df.index.values,
 ax.set(xlabel="Date",
        ylabel="Valence",
        title="Valence over Time")
+# scatterplot
+#plt.title("Energy and Valence")
+#sns.scatterplot(x=df.index.values, y=df['Energy'])
 
+# jointplot
+#sns.jointplot(x="Valence", y="Energy", data=df, kind="kde")
 plt.show()
