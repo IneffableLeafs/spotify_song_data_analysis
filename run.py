@@ -1,7 +1,7 @@
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
 from spotify_client import SpotifyClient
-from data_conversion import DataAnalysis	
+from data_analysis import DataAnalysis	
 import pandas as pd
 import matplotlib.pyplot as plt
 import seaborn as sns
@@ -29,29 +29,31 @@ song_ids = []
 
 print("Depending on the size of library, this may take a few minutes.")
 # we need to keep calling get_song until we get all the songs in the user's library.
-for song in range(offset, max_songs): 
+#for song in range(offset, max_songs): 
 
-	SpotifyClient.get_song_ids(sp, offset, song_ids)
-	offset += 50
+SpotifyClient.get_song_ids(sp, offset, song_ids)
+	#offset += 50
 
+print(song_ids)
 # now we need to loop through each track and get the audio features for each track, storing each feature in a separate list.
 # we will consider the following features:
-danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo = ([] for i in range(9))
+danceability, energy, acousticness, valence, tempo = ([] for i in range(9))
 
 # now, we want to hand the get_audio_features function a single track at once, then add its features to the respective list:
 for song_id in song_ids:
-	SpotifyClient.get_audio_features(sp, song_id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo)
+	SpotifyClient.get_audio_features(sp, song_id, danceability, energy, acousticness, valence, tempo)
 
 # next, to do the data analysis with DataFrames, we need to convert our separate lists into a list of lists:
 audio_features = []
 audio_features.append(danceability)
 audio_features.append(energy)
-audio_features.append(loudness)
-audio_features.append(speechiness)
 audio_features.append(acousticness)
-audio_features.append(instrumentalness)
-audio_features.append(liveness)
 audio_features.append(valence)
 audio_features.append(tempo)
 
 df = DataAnalysis.dataframe_conversion(pd, audio_features)
+
+
+
+
+

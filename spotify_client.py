@@ -14,16 +14,12 @@ class SpotifyClient(object):
 		return song_ids
 
 	# this function will store nine audio features of all tracks in your library in separate lists
-	def get_audio_features(client, song_id, danceability, energy, loudness, speechiness, acousticness, instrumentalness, liveness, valence, tempo):
+	def get_audio_features(client, song_id, danceability, energy, acousticness, valence, tempo):
 		features = client.audio_features(song_id)
 
 		# add each feature to its respective list
 		danceability.append(features[0]['danceability'])
 		energy.append(features[0]['energy'])
-		loudness.append(features[0]['loudness'])
-		speechiness.append(features[0]['speechiness'])
 		acousticness.append(features[0]['acousticness'])
-		instrumentalness.append(features[0]['instrumentalness'])
-		liveness.append(features[0]['liveness'])
 		valence.append(features[0]['valence'])
 		tempo.append(features[0]['tempo'])
