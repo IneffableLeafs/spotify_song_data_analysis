@@ -7,3 +7,10 @@ class DataAnalysis(object):
 		df.to_csv("audio_features.csv")
 		print(df)
 		return df
+
+	def recent_dataframe_conversion(pd, data_list):
+		df = pd.DataFrame(data_list).transpose()
+		df.columns = ["Danceability", "Energy", "Valence", "Tempo", "In Liked Songs"]
+		df.to_csv("recent_audio_features.csv")
+		print(df)
+		return df
