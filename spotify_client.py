@@ -39,9 +39,9 @@ class SpotifyClient(object):
 
 			# if our track is found in our liked songs:
 			if song_ids.count(track['id']) == 1:
-				in_liked_songs.append("Yes")
+				in_liked_songs.append(1) # 1 if song is liked
 			else:
-				in_liked_songs.append("No")
+				in_liked_songs.append(0) # 0 if song is not liked
 
 					
 

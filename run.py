@@ -18,8 +18,8 @@ sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="43dfe303cbce478e8c8952
 # set the offset initially to zero
 offset = 0
 
-# set this to the number of songs 
-max_songs = 372
+# 20 means the loop will cover 50x20 = 1000 songs:
+max_songs = 20
 
 # make lists for song ids, dates, recently played, and whether the recent is in liked songs
 song_ids = []
