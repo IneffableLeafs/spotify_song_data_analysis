@@ -6,7 +6,7 @@ import pandas as pd
 from matplotlib import pyplot as plt, dates
 import seaborn as sns
 
-scope = 'user-library-read user-read-recently-played'
+scope = 'user-library-read user-read-recently-played playlist-modify-private playlist-read-private'
 
 # authenticate and connect spotipy to spotify
 sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="43dfe303cbce478e8c8952eed351e881",
@@ -90,4 +90,10 @@ SpotifyClient.recommended_songs(sp, ideal_songs, new_songs)
 
 print(new_songs)
 print(len(new_songs))
+
+# create the playlist to put our recommended songs into
+playlist = SpotifyClient.create_playlist(sp)
+
+# add the recommended songs to our new playlist
+SpotifyClient.add_songs(sp, playlist, new_songs)
 
