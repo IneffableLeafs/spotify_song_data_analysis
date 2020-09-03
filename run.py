@@ -87,6 +87,7 @@ ideal_songs = DataAnalysis.ideal_song(pd, name)
 # now, using this list of ideal songs, we need to get our list of recommendations:
 # we will loop through so that we can get recommendations from all of our ideal songs:
 SpotifyClient.recommended_songs(sp, ideal_songs, new_songs)
+
 print(new_songs)
 print(len(new_songs))
 

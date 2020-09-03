@@ -58,6 +58,27 @@ class SpotifyClient(object):
 				print(idx, track['id'] + " - " + track['name'])
 				new_songs.append(track['id'])
 
+	# create a playlist to put our recommended songs into, get the playlist id:
+	def create_playlist(client):
+		# first, lets create the playlist:
+		user_id = "ineffableleaves"
+		playlist_name = "DataPlaylist"
+		client.user_playlist_create(user_id, playlist_name, public=False, collaborative=False, description="This playlist was created with Python.")
+		playlists = client.user_playlists(user_id, limit=50, offset=0)
+		# now, let's get the ID of that playlist:
+		for playlist in enumerate(playlists['items']):
+			name = playlist['name']
+			if name == playlist_name:
+				playlist_id = playlist['id']
+				break
+			else: 
+				continue
+				
+		return playlist_id
 
+
+	# this function will add our recommended songs to our spotify library:
+	def add_songs(client, new_songs):
+		playlist_add_items(playlist_id, items, position=None)
 
 
