@@ -80,7 +80,12 @@ class SpotifyClient(object):
 
 	# this function will add our recommended songs to our spotify library:
 	def add_songs(client, playlist_id, new_songs):
-		client.playlist_add_items(playlist_id, new_songs)
+		number_of_songs = len(new_songs)
+		for song in new_songs:
+			song = "spotify:track:" + song
+			song = [song]
+			print(song)
+			client.playlist_add_items(playlist_id, song)
 		print(f"{len(new_songs)} new songs added to your playlist!")
 
 
