@@ -28,9 +28,9 @@ song_ids, dates_added, recently_played_songs, in_liked_songs, new_songs = ([] fo
 
 
 # we need to keep calling get_song until we get all the songs in the user's library.
-#for song in range(offset, max_songs): 
-#	SpotifyClient.get_song_ids(sp, offset, song_ids, dates_added)
-#	offset += 50
+for song in range(offset, max_songs): 
+	SpotifyClient.get_song_ids(sp, offset, song_ids, dates_added)
+	offset += 50
 
 print(song_ids)
 print(dates_added)
@@ -42,8 +42,8 @@ danceability, danceability_recent, energy, energy_recent, valence, valence_recen
 
 # now, we want to hand the get_audio_features function a single track at once, then add its features to the respective list:
 # also we want the dates that the track was added:
-#for song_id in song_ids:
-#	SpotifyClient.get_audio_features(sp, song_id, danceability, energy, valence, tempo)
+for song_id in song_ids:
+	SpotifyClient.get_audio_features(sp, song_id, danceability, energy, valence, tempo)
 
 
 # next, to do the data analysis with DataFrames, we need to convert our separate lists into a list of lists:
@@ -54,9 +54,8 @@ audio_features.append(valence)
 audio_features.append(tempo)
 audio_features.append(song_ids)
 audio_features.append(dates_added)
-#print(audio_features)
 
-#df = DataAnalysis.dataframe_conversion(pd, audio_features)
+df = DataAnalysis.dataframe_conversion(pd, audio_features)
 
 # next, we need to look for new songs to add to my library.
 # these songs must have my preferred features, or be in a reasonable boundary of these songs:
@@ -67,8 +66,8 @@ audio_features.append(dates_added)
 SpotifyClient.recently_played(sp, song_ids, in_liked_songs, recently_played_songs)
 
 # now lets get the audio features for our recently played songs:
-#for recent_song in recently_played_songs:
-#	SpotifyClient.get_audio_features(sp, recent_song, danceability_recent, energy_recent, valence_recent, tempo_recent)
+for recent_song in recently_played_songs:
+	SpotifyClient.get_audio_features(sp, recent_song, danceability_recent, energy_recent, valence_recent, tempo_recent)
 
 # next, to do the data analysis with DataFrames, we need to convert our separate lists into a list of lists:
 recent_audio_features = []
@@ -78,7 +77,7 @@ recent_audio_features.append(valence_recent)
 recent_audio_features.append(tempo_recent)
 recent_audio_features.append(in_liked_songs)
 
-#df_recents = DataAnalysis.recent_dataframe_conversion(pd, recent_audio_features)
+df_recents = DataAnalysis.recent_dataframe_conversion(pd, recent_audio_features)
 
 # now we want to go through our dataframe of liked songs and get our "ideal songs":
 # songs which fall into the bounds of the KDE plot highest density regions.
