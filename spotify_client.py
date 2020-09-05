@@ -44,14 +44,17 @@ class SpotifyClient(object):
 				in_liked_songs.append(0) # 0 if song is not liked
 
 	# this function will get recommendations from spotify that match my feature criteria: 				
-	def recommended_songs(client, ideal_songs, new_songs):
+	def recommended_songs(client, ideal_songs, new_songs, max_energy, max_valence, max_tempo, min_energy, min_valence, min_tempo):
 		# get the 3 most recently added songs for the seed
 		for song in ideal_songs:
 		#ideal_songs = ideal_songs[:3]
 			print(song)
 			song = [song]
 			print(song)
-			recom_songs = client.recommendations(limit=100, seed_tracks=song)
+			recom_songs = client.recommendations(limit=100, seed_tracks=song, 
+											max_energy=max_energy, max_valence=max_valence,
+											max_tempo=max_tempo, min_energy=min_energy, 
+											min_valence=min_valence, min_tempo=min_tempo)
 			print(recom_songs)
 			for idx, track in enumerate(recom_songs['tracks']):
 				new_track = track['id']

@@ -1,4 +1,7 @@
-from run import pd, sp, ideal_songs, new_songs
+from run import sp
+import pandas as pd
+from data_analysis import DataAnalysis
+from spotify_client import SpotifyClient
 
 # from looking at the KDE plots in plots.py, the darkest regions were in what bounds?
 max_energy = 0.8
@@ -8,14 +11,14 @@ min_valence = 0.47
 max_tempo = 133
 min_tempo = 77
 
-
+new_songs = []
 # now we want to go through our dataframe of liked songs and get our "ideal songs":
 # songs which fall into the bounds of the KDE plot highest density regions.
 name = "audio_features.csv"
 ideal_songs = DataAnalysis.ideal_song(pd, name, max_energy, max_valence, max_tempo, min_energy, min_valence, min_tempo)
 # now, using this list of ideal songs, we need to get our list of recommendations:
 # we will loop through so that we can get recommendations from all of our ideal songs:
-SpotifyClient.recommended_songs(sp, ideal_songs, new_songs)
+SpotifyClient.recommended_songs(sp, ideal_songs, new_songs, max_energy, max_valence, max_tempo, min_energy, min_valence, min_tempo)
 
 print(new_songs)
 print(len(new_songs))

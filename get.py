@@ -1,18 +1,25 @@
 import spotipy
-from spotipy.oauth2 import SpotifyOAuth, SpotifyClientCredentials
+from spotipy.oauth2 import SpotifyOAuth
 from spotify_client import SpotifyClient
 from data_analysis import DataAnalysis	
 import pandas as pd
-from matplotlib import pyplot as plt, dates
+from matplotlib import pyplot as plt
 import seaborn as sns
 
+# type your client_id, client_secret, and username (put them between quotation marks):
+client_id = "43dfe303cbce478e8c8952eed351e881"
+client_secret = "3b8aa6ee50b64d9bb16ba09554b0b51e"
+username = "ineffableleaves"
+
+
 scope = 'user-library-read user-read-recently-played playlist-modify-private playlist-read-private'
+redirect_uri = "http://localhost:8888/callback"
 
 # authenticate and connect spotipy to spotify
-sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id="43dfe303cbce478e8c8952eed351e881",
-                                               client_secret="3b8aa6ee50b64d9bb16ba09554b0b51e",
-                                               redirect_uri="http://localhost:8888/callback",
-                                               username="ineffableleaves",
+sp = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=client_id,
+                                               client_secret=client_secret,
+                                               redirect_uri=redirect_uri,
+                                               username=username,
                                                scope=scope))
 
 # set the offset initially to zero
@@ -24,7 +31,7 @@ max_songs = 20
 # make lists for song ids, dates, recently played, whether the recent is in liked songs, and a list for new songs
 song_ids = []
 dates_added = []
-song_ids, dates_added, recently_played_songs, in_liked_songs, new_songs = ([] for i in range(5))
+song_ids, dates_added, recently_played_songs, in_liked_songs = ([] for i in range(4))
 
 
 # we need to keep calling get_song until we get all the songs in the user's library.
@@ -62,7 +69,6 @@ df = DataAnalysis.dataframe_conversion(pd, audio_features)
 # we will need to use the current_user_saved_tracks_add(list of track ids) method.
 # this means we need to first search spotify for tracks that match my taste, add them to a list of track ids,
 # and then finally pass that list into the function.
-
 SpotifyClient.recently_played(sp, song_ids, in_liked_songs, recently_played_songs)
 
 # now lets get the audio features for our recently played songs:
