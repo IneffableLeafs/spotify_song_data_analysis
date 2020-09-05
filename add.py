@@ -1,4 +1,4 @@
-from run import sp
+from spotipy_connection import sp
 import pandas as pd
 from data_analysis import DataAnalysis
 from spotify_client import SpotifyClient
@@ -27,4 +27,4 @@ print(len(new_songs))
 playlist = SpotifyClient.create_playlist(sp)
 
 # add the recommended songs to our new playlist
-SpotifyClient.add_songs(sp, playlist, new_songs)
+SpotifyClient.add_songs(sp, playlist, new_songs) 
