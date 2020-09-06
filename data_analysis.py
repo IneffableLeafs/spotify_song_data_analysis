@@ -27,13 +27,11 @@ class DataAnalysis(object):
 	# this function will take in the csv of our liked songs and using our features narrow it down
 	# to a list of "ideal songs" to be used with the recommendations() spotipy method
 	def ideal_song(pd, csv_name, max_energy, max_valence, max_tempo, min_energy, min_valence, min_tempo):
+		# the next four lines will reduce the size of your library based on the three audio features
 		df = pd.read_csv(csv_name)
 		df = df[(df["Energy"]>=min_energy) & (df["Energy"]<=max_energy)]
-		print(df)
 		df = df[(df["Valence"]>=min_valence) & (df["Valence"]<=max_valence)]
-		print(df)
 		df = df[(df["Tempo"]>=min_tempo) & (df["Tempo"]<=max_tempo)]
-		print(df)
 
 		# get the Song IDS of the remaining songs after applying features
 		recommendation_list = df["Song ID"].to_list()
