@@ -49,8 +49,11 @@ In the **add.py** file:
 1. You'll want to enter your recorded numbers here, replacing the values of max_energy to min_tempo (lines 7-12) with your own bounds.
 2. Run it!
 
+<<<<<<< HEAD
 **data_analysis.py** and **spotify_client** contain all the helper functions used.
 
+=======
+>>>>>>> abstraction
 ** With that, check your Spotify for your new playlist, and enjoy music that matches your taste!
 
 
