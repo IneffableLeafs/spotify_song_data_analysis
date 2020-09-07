@@ -1,3 +1,5 @@
+import random
+
 class SpotifyClient(object):
 
 	# this function will return a list of the song ids of the user's spotify library and the dates added
@@ -47,7 +49,7 @@ class SpotifyClient(object):
 			print(song)
 			song = [song]
 			print(song)
-			recom_songs = client.recommendations(limit=10, seed_tracks=song, 
+			recom_songs = client.recommendations(limit=5, seed_tracks=song, 
 											max_energy=max_energy, max_valence=max_valence,
 											max_tempo=max_tempo, min_energy=min_energy, 
 											min_valence=min_valence, min_tempo=min_tempo)
@@ -83,6 +85,8 @@ class SpotifyClient(object):
 		for song in new_songs:
 			song = "spotify:track:" + song
 			final_songs.append(song)
+		# randomize the order of songs for the playlist
+		random.shuffle(final_songs)
 		split_final_songs = [final_songs[x:x+100] for x in range(0, len(final_songs), 100)]
 		for song_group in split_final_songs:
 			client.playlist_add_items(playlist_id, song_group)
