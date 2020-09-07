@@ -12,6 +12,7 @@ This is my Spotify song analysis project! After struggling to find new songs tha
 - I successfully made a playlist full of songs I like!
 ![My results](results.png)
 - Further analysis could be done later on said playlist, to see just how many songs I actually like, and then go back to edit my model and code based on the discrepancies I see.
+- If you'd like to see my graphic analysis, to see how you can also do the same, check out [data_exploration.pdf](data_exploration.pdf).
 
 ## If you would like to use the project for yourself, follow these steps:
 # Start by going to [Spotify's developer website](https://developer.spotify.com/dashboard/login):
@@ -32,7 +33,7 @@ The purpose of this file is to GET songs. It will get:
 It will also CREATE files, namely: 
 1. **audio_features.csv**: contains the audio features, song ID, and date added of all your liked songs.
 2. **recent_audio_features.csv**: contains the audio features of your recently listened to songs. If that song is in your liked songs, it will have a "1", otherwise it will have a "0".
-**Run get.py**
+**Run get.py**.
 You should have these two new files in the same directory as the program itself.
 
 # Next, move to machine_learning_models.py:
