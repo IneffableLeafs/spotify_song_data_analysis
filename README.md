@@ -1,6 +1,19 @@
 # Spotify Song Data Analysis
-This is my Spotify song analysis project!
+This is my Spotify song analysis project! After struggling to find new songs that I liked in Spotify, I decided to try to make my own recommendation program to get songs that I like using its audio features.
 
+## Data
+- I got the data from Spotify using the Spotipy Python package, getting a JSON-type response from the Spotify-API quickl.
+- I then parsed the response into lists, and then used the pandas package to turn these lists in csv files.
+
+## Objective
+- Create an app that can add songs I like to a new playlist using [audio features](https://developer.spotify.com/documentation/web-api/reference/tracks/get-audio-features/) as the baseline to get new songs.
+
+## Results
+- I successfully made a playlist full of songs I like!
+![My results](results.png)
+- Further analysis could be done later on said playlist, to see just how many songs I actually like, and then go back to edit my model and code based on the discrepancies I see.
+
+## If you would like to use the project for yourself, follow these steps:
 # Start by going to [Spotify's developer website](https://developer.spotify.com/dashboard/login):
 1. You'll want to create a Spotify account if you don't have one already.
 2. Then, click "Create an App", and enter in an "App name" and "App description".
@@ -27,7 +40,7 @@ The purpose of this file is to run machine learning algorithms on your csv files
 Five models are provided. One is a decision tree regression, and the other four are random forest regressions.
 1. On line 30 of the file, replace you can replace "decision_tree_model" with "forest_1", "forest_2", etc. to try other models.
 2. Running this file will show you the percent error. So if you get 0.1, the algorithm predicts wrong 10% of the time.
-3. This will give you an idea of how wide your music taste is. The lower your score, the more focused your music taste is.
+3. This will give you an idea of how wide your music taste is. The lower your score, the more focused your music taste is, and the more likely the songs you will get fit your music taste.
 
 # Now, move to plots.py:
 Here, you can play around with the data you have. In this case, line 17 has a bivariable plot, that compares two variables.
