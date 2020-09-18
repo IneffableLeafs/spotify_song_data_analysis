@@ -2,7 +2,7 @@
 This is my Spotify song analysis project! After struggling to find new songs that I liked in Spotify, I decided to try to make my own recommendation program to get songs that I like using its audio features.
 
 ## Data
-- I got the data from Spotify using the Spotipy Python package, getting a JSON-type response from the Spotify-API quickl.
+- I got the data from Spotify using the Spotipy Python package, getting a JSON-type response from the Spotify-API quickly.
 - I then parsed the response into lists, and then used the pandas package to turn these lists in csv files.
 
 ## Objective
